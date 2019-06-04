@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from scipy.io import loadmat
 
-FILENAME = 'data_25'
+FILENAME = './Data/data_25'
 
 mat = loadmat(os.path.join('data', FILENAME))
 
