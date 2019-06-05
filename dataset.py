@@ -12,7 +12,7 @@ class Data(Dataset):
         #transform makes sure that type is torch and that the dimensions are (NxHxW)
         x_transformed = transforms(x)
         y_transformed = transforms(y)
-        self.data = {'X':x_transformed, 'Y':y_transformed}
+        self.data = {'X':x_transformed.unsqueeze_(1), 'Y':y_transformed.unsqueeze_(1)}
         
     def __len__(self):
         return self.data['X'].shape[0]
