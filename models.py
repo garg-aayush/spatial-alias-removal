@@ -21,13 +21,13 @@ class SRCNN(nn.Module):
             nn.BatchNorm2d(latent_dim[1]),
 
             nn.Conv2d(latent_dim[1], 1, 5, padding=2),
-            nn.Tanh(),
+            # nn.Tanh(),
         )
     
     def forward(self, x):
         x_upscaled = nn.functional.interpolate(x, size=self.output_dim)
         
-        return self.sequence(x_upscaled)
+        return torch.tanh(self.sequence(x_upscaled) + x_upscaled)
 
 
 class Discriminator(nn.Module):

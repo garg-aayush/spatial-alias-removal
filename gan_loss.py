@@ -110,7 +110,10 @@ def plot_samples(generator, dataset, device='cuda:0', batch_size=4):
         if idx is 0:
             plt.title("25m")
 
-        plt.imshow(l.squeeze().detach().cpu(), cmap='gray',
+        l = torch.nn.functional.interpolate(l.unsqueeze(0), size=(251, 121))
+        l = torch.rfft(l, 2, normalized=True)
+        l = l.pow(2).sum(-1).sqrt()
+        plt.imshow(l.squeeze().detach().cpu(),
                    interpolation='none')
         plt.axis('off')
 
@@ -118,7 +121,9 @@ def plot_samples(generator, dataset, device='cuda:0', batch_size=4):
         if idx is 0:
             plt.title("Superresolution")
 
-        plt.imshow(s.squeeze().detach().cpu(), cmap='gray',
+        s = torch.rfft(s, 2, normalized=True)
+        s = s.pow(2).sum(-1).sqrt()
+        plt.imshow(s.squeeze().detach().cpu(),
                    interpolation='none')
         plt.axis('off')
 
@@ -126,7 +131,9 @@ def plot_samples(generator, dataset, device='cuda:0', batch_size=4):
         if idx is 0:
             plt.title("12.5m")
 
-        plt.imshow(h.squeeze().detach().cpu(), cmap='gray',
+        h = torch.rfft(h, 2, normalized=True)
+        h = h.pow(2).sum(-1).sqrt()
+        plt.imshow(h.squeeze().detach().cpu(),
                    interpolation='none')
         plt.axis('off')
 
