@@ -1,2 +1,2 @@
 # spatial-alias-removal
-Removing spatial aliasing from finite-difference modeled data.
+Removing the spatial aliasing from the seismic data
