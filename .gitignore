@@ -110,3 +110,5 @@ venv.bak/
 # mat files
 *.mat
 
+#pt pytorch files
+*.pt
