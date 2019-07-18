@@ -11,7 +11,7 @@ from math import log10
 from statistics import mean
 from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
-#import pytorch_ssim
+
 from dataset import Data, ToTensor, RandomHorizontalFlip
 from models import SRCNN, Discriminator, EDSR, VDSR
 
@@ -171,7 +171,7 @@ def plot_samples(generator, dataset, epoch, device='cuda', directory='image',
                    interpolation='none', cmap=cmap)
         plt.axis('off')
 
-    dataloader = DataLoader(dataset, shuffle=False, batch_size=2)
+    dataloader = DataLoader(dataset, shuffle=False, batch_size=1)
     sample = next(iter(dataloader))
 
     lores_batch = sample['x'].to(device).float()
@@ -181,29 +181,29 @@ def plot_samples(generator, dataset, epoch, device='cuda', directory='image',
 
     sures_batch = generator(lores_batch)
 
-    num_cols = 6
-    num_rows = dataloader.batch_size
+    num_cols = 3
+    num_rows = 2
     output_dim = dataset[0]['y'].shape[1:]
 
-    plt.figure(figsize=(9, 3 * num_rows))
+    plt.figure(figsize=(12, 6))
 
     for idx, (lores, sures, hires) \
             in enumerate(zip(lores_batch, sures_batch, hires_batch)):
         # Plot images.
-        add_subplot(plt, lores, 1, idx, "LR", cmap='gray')
-        add_subplot(plt, sures, 2, idx, "SR", cmap='gray')
-        add_subplot(plt, hires, 3, idx, "HR", cmap='gray')
+        add_subplot(plt, lores, 1, idx, "Input aliased data", cmap='gray')
+        add_subplot(plt, sures, 2, idx, "Super-resolution predicted data", cmap='gray')
+        add_subplot(plt, hires, 3, idx, "Output unaliased data", cmap='gray')
 
         # Plot transformed images.
-        add_subplot(plt, transform_fk(lores, output_dim), 4, idx, "LR fk")
-        add_subplot(plt, transform_fk(sures, output_dim), 5, idx, "SR fk")
-        add_subplot(plt, transform_fk(hires, output_dim), 6, idx, "HR fk")
+        add_subplot(plt, transform_fk(lores, output_dim), 4, idx, "In fk")
+        add_subplot(plt, transform_fk(sures, output_dim), 5, idx, "In fk")
+        add_subplot(plt, transform_fk(hires, output_dim), 6, idx, "In fk")
 
     plt.tight_layout()
     if not is_train:
-        plt.savefig(os.path.join(directory, f'samples_{epoch:03d}.pdf'))
+        plt.savefig(os.path.join(directory, f'samples_val_{epoch:03d}.pdf'))
     else:
-        plt.savefig(os.path.join(directory, f'samples_{epoch:03d}_train.pdf'))
+        plt.savefig(os.path.join(directory, f'samples_train_{epoch:03d}.pdf'))
     plt.close()
 
 
@@ -223,7 +223,6 @@ def save_loss_plot(loss_g, directory, is_val=False, name=None):
             plt.savefig(f"{directory}/loss_{name}.png")
 
     plt.close()
-
 
 def main(args):
     # Create directories if it's not  hyper-optimisation round.
@@ -389,7 +388,7 @@ if __name__ == "__main__":
     data_group = parser.add_argument_group('Data')
 
     data_group.add_argument(
-        '--data_root', type=str, default='Data_big/',
+        '--data_root', '-d', type=str, default='data_big/',
         help="Root directory of the data.")
     data_group.add_argument(
         '--filename_x', '-x', type=str, default='data_20_big',
@@ -425,7 +424,7 @@ if __name__ == "__main__":
     training_group = parser.add_argument_group('Training')
 
     training_group.add_argument(
-        '--n_epochs', type=int, default=100,
+        '--n_epochs', type=int, default=20,
         help="number of epochs")
     training_group.add_argument(
         '--batch_size', type=int, default=8,
@@ -454,13 +453,13 @@ if __name__ == "__main__":
         '--eval_interval', type=int, default=4,
         help="evaluate on test set every eval_interval epochs")
     misc_group.add_argument(
-        '--save_interval', type=int, default=10,
+        '--save_interval', type=int, default=4,
         help="Save images every SAVE_INTERVAL epochs")
     misc_group.add_argument(
         '--device', type=str, default="cpu",
         help="Training device 'cpu' or 'cuda:0'")
     misc_group.add_argument(
-        '--experiment_num', type=int, default=31,
+        '--experiment_num', '-n', type=int, default=31,
         help="Id of the experiment running")
     misc_group.add_argument(
         "--is_optimisation", type=int, default=0,
@@ -474,3 +473,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
+

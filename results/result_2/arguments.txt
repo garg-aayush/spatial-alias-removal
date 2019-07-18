@@ -1,0 +1,23 @@
+{
+  "data_root": "Data_big",
+  "filename_x": "data_20_big",
+  "filename_y": "data_10_big",
+  "test_percentage": 0.1,
+  "val_percentage": 0.1,
+  "model": "VDSR",
+  "latent_dim": 256,
+  "num_res_blocks": 4,
+  "n_epochs": 50,
+  "batch_size": 8,
+  "lr": 0.001,
+  "scheduler_patience": 5,
+  "is_psnr_step": 0,
+  "criterion_type": "L1",
+  "use_fk_loss": 1,
+  "eval_interval": 4,
+  "save_interval": 4,
+  "device": "cuda:0",
+  "experiment_num": 2,
+  "is_optimisation": 0,
+  "save_test_dataset": 1
+}
