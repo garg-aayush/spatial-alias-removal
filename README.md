@@ -103,6 +103,6 @@ The scripts depends requires the following packages:
 - [Hyperopt](https://github.com/hyperopt/hyperopt)
 - [pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim) 
 
-The best practice is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
+The best practice is to create a [conda](https://www.anaconda.com/) environment with the following packages before running the scripts.
 
 ---
