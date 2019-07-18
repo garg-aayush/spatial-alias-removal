@@ -1,6 +1,6 @@
 # Removing the spatial aliasing in seismic data using Deep Learning Super-Resolution
-Aayush Garg, Delft University of Technology
-Abe Vos, Nikita Bortych and Dr. Deepak Gupta, University of Amsterdam
+Aayush Garg, *Delft University of Technology*  
+Abe Vos, Nikita Bortych and Dr. Deepak Gupta, *University of Amsterdam*
 
 ## Abstract
 > To do
@@ -86,6 +86,8 @@ $ python mat_generation.py -h
 
 - You can directly use the trained network (already saved in `results/result_2`) directly without training by skipping the *step 4* in the above section.
 
+- Note, the scripts assume that you have access to GPU for training the data. In case, if you don't have access to GPU, change `--device cuda:0` to `--device cpu` while running the scripts. We recommend to train the network on a GPU, otherwise it will take quite a long time to train the network.
+
 ---
 ## Dependencies
 The scripts depends requires the following packages:
@@ -97,6 +99,6 @@ The scripts depends requires the following packages:
 - [Hyperopt](https://github.com/hyperopt/hyperopt)
 - [pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim) 
 
-The best way is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
+The best practice- is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
 
 ---
