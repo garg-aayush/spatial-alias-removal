@@ -49,18 +49,44 @@ Input data with spatial aliasing |  Output data without spatial aliasing
 
 ---
 
-## Steps to train the network
-- To do
+## Steps to train the network and run the blind test
+1. First of all, ensure you have the correct python environment and dependencies to run the scripts (see below).
 
----
+2. Clone/Download the repository and navigate to the downloaded folder.
+```
+git clone https://github.com/garg-aayush/spatial-alias-removal
+cd spatial-alias-removal
+```
 
-## Steps to run the blind test
-- To do
+3. Download the datasets from the [google drive link](https://drive.google.com/open?id=10ohxuyZ9SdXZOqHEArSSv18IZ7PUF2ot) and add to the respective directories in the `spatial-alias-removal`
 
+4. In order to train the network run
+```
+#It assumes you have access to GPU
+python train.py -d train_data -x data_20_big -y data_10_big -n 1 --device cuda:0 --n_epochs 50
+```
+
+5. Then, use the trained network to remove spatial aliasing from the blind dataset
+```
+#It assumes you have access to GPU 
+python mat_generation.py --data_root blind_data -x data_20_big --model_folder results/result_2 --device cuda:0 
+```
+
+#### Note
+- 
 ---
 
 ## Dependencies
-- To do
+The scripts depends requires the following packages:
+- [Python 3.6](https://www.python.org/downloads/release/python-360/)
+- [PyTorch](https://pytorch.org/)
+- [Torchvision](https://pytorch.org/)
+- [matplotlib](https://matplotlib.org/)
+- [SciPy](https://www.scipy.org/)
+- [Hyperopt](https://github.com/hyperopt/hyperopt)
+- [pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim) 
+
+The best way is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
 
 ---
 
