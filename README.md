@@ -53,29 +53,40 @@ Input data with spatial aliasing |  Output data without spatial aliasing
 1. First of all, ensure you have the correct python environment and dependencies to run the scripts (see below).
 
 2. Clone/Download the repository and navigate to the downloaded folder.
-```
-git clone https://github.com/garg-aayush/spatial-alias-removal
-cd spatial-alias-removal
+```sh
+$ git clone https://github.com/garg-aayush/spatial-alias-removal
+$ cd spatial-alias-removal
 ```
 
 3. Download the datasets from the [google drive link](https://drive.google.com/open?id=10ohxuyZ9SdXZOqHEArSSv18IZ7PUF2ot) and add to the respective directories in the `spatial-alias-removal`
 
 4. In order to train the network run
-```
+```sh
 #It assumes you have access to GPU
-python train.py -d train_data -x data_20_big -y data_10_big -n 1 --device cuda:0 --n_epochs 50
+$ python train.py -d train_data -x data_20_big -y data_10_big -n 1 --device cuda:0 --n_epochs 50
 ```
 
 5. Then, use the trained network to remove spatial aliasing from the blind dataset
-```
+```sh
 #It assumes you have access to GPU 
-python mat_generation.py --data_root blind_data -x data_20_big --model_folder results/result_2 --device cuda:0 
+$ python mat_generation.py --data_root blind_data -x data_20_big --model_folder results/result_2 --device cuda:0 
 ```
-
-#### Note
-- 
 ---
 
+## Useful information
+- The above mentioned steps were followed exactly along with the other mentioned parameters in the scripts to generate the results for the current repository.
+
+- You can get more information about the various parameters in the scripts either by going through the scripts or else
+```sh
+$ python train.py -h
+$ python mat_generation.py -h
+```
+
+- The scripts assumes the training/blind datasets to be in `nt X nr X ns` size saved in `.mat` format. The network was trained for input sample example of `251 X 151` size and output sample example of `251 X 301` size. We have not tested the network for different size examples.
+
+- You can directly use the trained network (already saved in `results/result_2`) directly without training by skipping the *step 4* in the above section.
+
+---
 ## Dependencies
 The scripts depends requires the following packages:
 - [Python 3.6](https://www.python.org/downloads/release/python-360/)
@@ -89,9 +100,3 @@ The scripts depends requires the following packages:
 The best way is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
 
 ---
-
-## Other useful information
-- To do
-
----
-# Link test
