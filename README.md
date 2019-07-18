@@ -1,6 +1,6 @@
 # Removing the spatial aliasing in seismic data using Deep Learning Super-Resolution
 Aayush Garg, *Delft University of Technology*  
-Abe Vos, Nikita Bortych and Dr. Deepak Gupta, *University of Amsterdam*
+Abe Vos, Nikita Bortych and Deepak Gupta, *University of Amsterdam*
 
 ## Abstract
 Seismic data is more often or not insufficiently or irregularly sampled either due to logistics and cost constraints associated with the data acquisition. The simplest case of spatial sampling problems occur when the data is regularly sampled but too sparse. The sparse sampling not just leads to the loss of high-wavenumbers, but also causes spatial aliasing due to the overlap of aliasing energy artifacts over the signal energy. 
