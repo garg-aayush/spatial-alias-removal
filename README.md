@@ -3,7 +3,11 @@ Aayush Garg, *Delft University of Technology*
 Abe Vos, Nikita Bortych and Dr. Deepak Gupta, *University of Amsterdam*
 
 ## Abstract
-> To do
+Seismic data is more often or not insufficiently or irregularly sampled either due to logistics and cost constraints associated with the data acquisition. The simplest case of spatial sampling problems occur when the data is regularly sampled but too sparse. The sparse sampling not just leads to the loss of high-wavenumbers, but also causes spatial aliasing due to the overlap of aliasing energy artifacts over the signal energy. 
+
+When we image the spatially aliased data, we encounter the trade-off between the resolution of the image and aliasing artifacts. In some situations, we can reduce the aliasing artifacts by using antialiasing filters and excluding the steeply dipping events. However, this antialiasing process leads to decrease in the resolution of image. 
+
+Here, we apply deep learning super-resolution to remove the spatial aliasing from the input seismic data. We train a modified `VDSR` network in order to up-scale the data by a factor of two in the spatial direction. Also, in order to make the trained network robust we make use of a loss function(s) that minimizes the error both in `space-time` and `f-k` domain. The trained network is able to remove the spatial aliasing and produces good qualitative and quantitative results on the blind dataset taken from different geological setting. 
 
 ---
 
@@ -99,6 +103,6 @@ The scripts depends requires the following packages:
 - [Hyperopt](https://github.com/hyperopt/hyperopt)
 - [pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim) 
 
-The best practice- is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
+The best practice is to create a [conda](https://www.anaconda.com/) with the following packages before running the scripts.
 
 ---
