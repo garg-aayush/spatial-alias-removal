@@ -5,6 +5,8 @@ Abe Vos, Nikita Bortych and Dr. Deepak Gupta, University of Amsterdam
 ## Abstract
 > To do
 
+---
+
 ## Blind data test results
 Input data with spatial aliasing |  Output data without spatial aliasing
 :-------------------------:|:-------------------------:
@@ -21,6 +23,7 @@ Input data with spatial aliasing |  Output data without spatial aliasing
 
 ![ In shot domain](./figures_results/image_10m_blind.png "In shot domain")
 
+---
 
 ## Repository info
 
@@ -44,17 +47,25 @@ Input data with spatial aliasing |  Output data without spatial aliasing
 - We made use of freely available [`fdelmodc`](https://janth.home.xs4all.nl/Software/Software.html) program to generate the training and blind datasets.   
 - You can download both the training and blind datasets using the following [google drive link](https://drive.google.com/open?id=10ohxuyZ9SdXZOqHEArSSv18IZ7PUF2ot). 
 
+---
+
 ## Steps to train the network
 - To do
+
+---
 
 ## Steps to run the blind test
 - To do
 
+---
+
 ## Dependencies
 - To do
+
+---
 
 ## Other useful information
 - To do
 
-
+---
 # Link test
