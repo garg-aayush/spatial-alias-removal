@@ -1,13 +1,19 @@
-# Removing the spatial aliasing in seismic data using Deep Learning Super-Resolution
+# Spatial aliasing removal using deep learning super-resolution
 Aayush Garg, *Delft University of Technology*  
 Abe Vos, Nikita Bortych and Deepak Gupta, *University of Amsterdam*
 
 ## Abstract
-Seismic data is more often or not insufficiently or irregularly sampled either due to logistics and cost constraints associated with the data acquisition. The simplest case of spatial sampling problems occur when the data is regularly sampled but too sparse. The sparse sampling not just leads to the loss of high-wavenumbers, but also causes spatial aliasing due to the overlap of aliasing energy artifacts over the signal energy. 
-
-When we image the spatially aliased data, we encounter the trade-off between the resolution of the image and aliasing artifacts. In some situations, we can reduce the aliasing artifacts by using antialiasing filters and excluding the steeply dipping events. However, this antialiasing process leads to decrease in the resolution of image. 
-
-Here, we apply deep learning super-resolution to remove the spatial aliasing from the input seismic data. We train a modified `VDSR` network in order to up-scale the data by a factor of two in the spatial direction. Also, in order to make the trained network robust we make use of a loss function(s) that minimizes the error both in `space-time` and `f-k` domain. The trained network is able to remove the spatial aliasing and produces good qualitative and quantitative results on the blind dataset taken from different geological setting. 
+Seismic data is often insufficiently or irregularly sampled due to logistics and cost constraints
+associated with the data acquisition. Even in the simple case of regularly but too coarse sampled
+data, it leads to the loss of high-wavenumbers and overlapping of the aliased energy artifacts with
+the signal energy. When we image the spatially aliased data, we encounter the trade-off between the
+resolution of the image and aliasing artifacts. In this paper, we use a deep learning super-resolution
+network to upscale the data by a factor of two in the spatial direction and remove the spatial aliasing
+present in the data. Also, we make use of a loss function that minimizes the error both in the spacetime
+and the f-k domain to make the network more robust. We show that the trained network is able
+to reconstruct the dense data with half the receiver interval and remove the spatial aliasing in the f-k
+domain both for the training and for a blind dataset. This reconstructed dense data improves the
+accuracy of seismic imaging as a result of denser sampling and removed spatial aliasing.
 
 ---
 
